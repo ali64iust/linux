@@ -37,6 +37,7 @@ echo %%%%%%%%%%%%%Reboot%%%%%%%%%% >> /var/log/xlog
 # All done.
 
 ---------------------------------------------------------------------------------------------------
+ok
 To boot in kiosk mode in Ubuntu and launch Firefox, you can follow these steps:
 
 1. Install Ubuntu on your computer.
@@ -63,14 +64,14 @@ To boot in kiosk mode in Ubuntu and launch Firefox, you can follow these steps:
 
 8. In the text editor that opens, paste the following code:
 
-   Desktop Entry
+   [Desktop Entry]
    Type=Application
    Name=Kiosk Mode
    Exec=/usr/bin/firefox -kiosk http://yoururl.com
    X-GNOME-Autostart-enabled=true
 
 
-
+this work
 [Desktop Entry]
 Type=Application
 Name=Kiosk Mode
