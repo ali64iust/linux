@@ -1,0 +1,8 @@
+https://itslinuxfoss.com/enable-disable-automatic-login-ubuntu/
+
+1-locate custom.conf
+2-sudo nano /etc/gdm3/custom.conf
+3-Now its time to edit the file and for it, find the “Enabling automatic login” section, which is by default disabled:
+To make it enable, remove the comments from “AutomaticLoginEnable” and “AutomaticLogin”. Also, replace the “user1” with the username for whose you want to customize these settings. For example, we will enable the automatic enable for user “itslinux”:
+
+
