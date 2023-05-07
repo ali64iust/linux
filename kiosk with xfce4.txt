@@ -1,0 +1,124 @@
+vim /etc/inittab
+
+# Default runlevel. The runlevels used by RHS are:
+#   0 - halt (Do NOT set initdefault to this)
+#   1 - Single user mode
+#   2 - Multiuser, without NFS (The same as 3, if you do not have networking)
+#   3 - Full multiuser mode
+#   4 - Kiosk mode
+#   5 - X11
+#   6 - reboot (Do NOT set initdefault to this)
+#
+id:4:initdefault:
+
+vim /etc/rc.d/rc4.d/firefox
+
+#!/bin/bash
+#
+# S99xkiosk   Initialization of kiosk for runlevel 4
+#
+# Author:           Gene Wilburn <genew@rom.on.ca>
+#
+ 
+# Display message on console
+echo "Starting up the X Window Kiosk ... "
+ 
+if [ -f /.netscape/lock] ; then
+   rm /.netscape/lock
+fi
+
+# Logging of X activity
+echo %%%%%%%%%%%%%Reboot%%%%%%%%%% >> /var/log/xlog
+/usr/lib/firefox/firefox
+ 
+# This point should only be reached by pressing Ctrl-Backspace
+/sbin/shutdown -r now
+ 
+# All done.
+
+---------------------------------------------------------------------------------------------------
+To boot in kiosk mode in Ubuntu and launch Firefox, you can follow these steps:
+
+1. Install Ubuntu on your computer.
+
+2. Open a terminal window by pressing Ctrl + Alt + T.
+
+3. Type the following command to install the Xfce desktop environment:
+
+   sudo apt-get install xfce4
+
+4. Once the installation is complete, type the following command to install Firefox:
+
+   sudo apt-get install firefox
+
+5. Next, create a new user account that will be used for kiosk mode:
+
+   sudo adduser kiosk
+
+6. Set a password for the kiosk user account when prompted.
+
+7. Type the following command to create a new startup script for kiosk mode:
+
+   sudo nano /etc/xdg/autostart/kiosk.desktop
+
+8. In the text editor that opens, paste the following code:
+
+   Desktop Entry
+   Type=Application
+   Name=Kiosk Mode
+   Exec=/usr/bin/firefox -kiosk http://yoururl.com
+   X-GNOME-Autostart-enabled=true
+
+
+
+[Desktop Entry]
+Type=Application
+Name=Kiosk Mode
+Exec=/usr/bin/firefox -kiosk https://google.com
+X-GNOME-Autostart-enabled=true
+
+9. Replace "http://yoururl.com" with the URL of the website you want to launch in kiosk mode.
+
+10. Save the file and exit the text editor.
+
+11. Reboot your computer.
+
+12. Log in as the kiosk user account.
+
+13. Firefox should automatically launch in kiosk mode and display the website you specified in step 9.
+
+Note: To exit kiosk mode, press Ctrl + Alt + F1 to switch to a virtual terminal, log in as your regular user account, and then type "sudo reboot" to restart your computer.
+---------------------------------------------------------------------------------------------------
+sudo apt-get install xscreensav* -y
+chert
+-------------------------------------
+https://help.gnome.org/admin/system-admin-guide/stable/lockdown-single-app-mode.html.en
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
