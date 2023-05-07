@@ -1,0 +1,31 @@
+https://help.gnome.org/admin/system-admin-guide/stable/lockdown-single-app-mode.html.en
+1- sudo apt-get install dconf-tools
+2- sudo apt install gnome 
+3- sudo adduser kiosk-user
+
+4-not needed - /usr/share/xsessions/kiosk.desktop
+[Desktop Entry]
+Name=GNOME on Xorg
+Comment=This session logs you into GNOME
+Exec=gnome-session  --session kiosk
+TryExec=gnome-session
+Type=Application
+DesktopNames=GNOME
+X-Ubuntu-Gettext-Domain=gnome-session-3.0
+
+5-/var/lib/AccountsService/users/[kiosk==>user]
+XSession=kiosk
+
+5-1-not needed /usr/share/applications/kiosk-shell.desktop
+[Desktop Entry]
+Exec=gnome-shell --mode=kiosk
+
+6- /etc/X11/sessions/kiosk.desktop
+
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Custom session
+Comment=This is our custom session
+#Exec=gnome-session --session=kiosk
+Exec=/usr/bin/firefox -kiosk https://google.com
